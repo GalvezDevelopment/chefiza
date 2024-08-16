@@ -41,6 +41,20 @@
           "codeCoverage": true
         }
       }
+    },
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "build": {
+      "dependsOn": ["^build", "codegen", "^codegen"]
+    },
+    "codegen": {
+      "cache": true
+    },
+    "swagger": {
+      "cache": true
     }
   },
   "generators": {
@@ -50,5 +64,6 @@
       "style": "scss",
       "unitTestRunner": "jest"
     }
-  }
+  },
+  "plugins": ["@nx-dotnet/core"]
 }
