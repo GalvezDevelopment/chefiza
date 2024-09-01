@@ -15,8 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@chefiza/generated/chefiza-api-types": [
-        "generated/chefiza-api-types/src/index.ts"
+      "@chefiza/generated/backend-types": [
+        "generated/backend-types/src/index.ts"
       ]
     }
   },
