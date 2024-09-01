@@ -1,7 +1,10 @@
 {
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "default": [
+      "{projectRoot}/**/*",
+      "sharedGlobals"
+    ],
     "production": [
       "default",
       "!{projectRoot}/.eslintrc.json",
@@ -17,8 +20,13 @@
   "targetDefaults": {
     "@angular-devkit/build-angular:application": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "@nx/eslint:lint": {
       "cache": true,
@@ -31,7 +39,11 @@
     },
     "@nx/jest:jest": {
       "cache": true,
-      "inputs": ["default", "^production", "{workspaceRoot}/jest.preset.js"],
+      "inputs": [
+        "default",
+        "^production",
+        "{workspaceRoot}/jest.preset.js"
+      ],
       "options": {
         "passWithNoTests": true
       },
@@ -44,11 +56,20 @@
     },
     "@nx/js:tsc": {
       "cache": true,
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
+      "dependsOn": [
+        "^build"
+      ],
+      "inputs": [
+        "production",
+        "^production"
+      ]
     },
     "build": {
-      "dependsOn": ["^build", "codegen", "^codegen"]
+      "dependsOn": [
+        "^build",
+        "codegen",
+        "^codegen"
+      ]
     },
     "codegen": {
       "cache": true
@@ -65,5 +86,34 @@
       "unitTestRunner": "jest"
     }
   },
-  "plugins": ["@nx-dotnet/core"]
+  "plugins": [
+    {
+      "plugin": "@nx-dotnet/core",
+      "options": {
+        "solutionFile": "{npmScope}.nx-dotnet.sln",
+        "inferProjects": true,
+        "nugetPackages": {
+          "Microsoft.EntityFrameworkCore": "8.0.7",
+          "Microsoft.EntityFrameworkCore.Design": "8.0.7",
+          "Microsoft.EntityFrameworkCore.SqlServer": "8.0.7",
+          "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
+          "AutoMapper": "13.0.1"
+        },
+        "inferredTargets": {
+          "build": "build",
+          "lint": "lint",
+          "serve": "serve",
+          "test": "test"
+        },
+        "ignorePaths": [],
+        "tags": [
+          "nx-dotnet",
+          "nx-dotnet",
+          "nx-dotnet",
+          "nx-dotnet",
+          "nx-dotnet"
+        ]
+      }
+    }
+  ]
 }

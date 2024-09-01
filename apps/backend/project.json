@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/backend",
+  "tags": [],
+  "targets": {
+    "swagger": {
+      "executor": "@nx-dotnet/core:update-swagger",
+      "outputs": ["{workspaceRoot}/generated/backend-swagger"],
+      "options": {
+        "output": "generated/backend-swagger"
+      },
+      "dependsOn": ["build"]
+    }
+  }
+}

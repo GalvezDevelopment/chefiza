@@ -1,6 +1,0 @@
-@Chefiza.ChefizaApi.ChefizaApi_HostAddress = http://localhost:5002
-
-GET {{Chefiza.ChefizaApi.ChefizaApi_HostAddress}}/weatherforecast/
-Accept: application/json
-
-###
