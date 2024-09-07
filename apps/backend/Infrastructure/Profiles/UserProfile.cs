@@ -6,8 +6,10 @@ namespace ChefizaApi.Profiles {
     public class UserProfile : Profile {
         public UserProfile() {
             CreateMap<CreateUserDto, User>();
-            CreateMap<User, CreateUserDto>();
+            CreateMap<CreateUserDto, Auth>();
             CreateMap<User, UserListDto>();
+            CreateMap<User, Auth>();
+            CreateMap<LoginDto, Auth>();
         }
     }
 }
