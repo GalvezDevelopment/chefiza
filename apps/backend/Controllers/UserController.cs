@@ -1,39 +1,20 @@
 using ChefizaApi.ApiModels;
 using ChefizaApi.Dtos;
 using ChefizaApi.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ChefizaApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
     {
         private readonly UserService _service;
-        public UserController(UserService userService) : base()
+        public UserController(UserService userService)
         {
             _service = userService;
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<ApiResponse<string>>> Add(CreateUserDto newUser)
-        {
-            var result = await _service.findByEmail(newUser.Email);
-            if (result != null)
-            {
-                return Conflict(new ApiResponse<string>
-                {
-                    StatusCode = StatusCodes.Status409Conflict,
-                    Success = false,
-                    Message = "Email already exists"
-                });
-            }
-
-            await _service.Add(newUser);
-            return Ok(new ApiResponse<string>
-            {
-                StatusCode = StatusCodes.Status200OK
-            });
         }
 
         [HttpGet("{email}")]
@@ -59,10 +40,13 @@ namespace ChefizaApi.Controllers
         }
 
         [HttpPatch]
-        public async Task<ActionResult<ApiResponse<string>>> Update(UpdateUserDto updatedUser) {
+        public async Task<ActionResult<ApiResponse<string>>> Update(UpdateUserDto updatedUser)
+        {
             var result = await _service.findByEmail(updatedUser.Email);
-            if (result == null) {
-                return Conflict(new ApiResponse<string>{
+            if (result == null)
+            {
+                return Conflict(new ApiResponse<string>
+                {
                     StatusCode = StatusCodes.Status404NotFound,
                     Success = false,
                     Message = "User does not exist"
@@ -71,7 +55,8 @@ namespace ChefizaApi.Controllers
 
             var success = await _service.Update(updatedUser);
 
-            return Ok(new ApiResponse<UserListDto>{
+            return Ok(new ApiResponse<UserListDto>
+            {
                 StatusCode = StatusCodes.Status200OK,
                 Success = true,
                 Data = (UserListDto)success
@@ -92,6 +77,16 @@ namespace ChefizaApi.Controllers
                 });
             }
             await _service.DeleteById(email);
+            return Ok(new ApiResponse<string>
+            {
+                StatusCode = StatusCodes.Status200OK
+            });
+        }
+
+        [HttpGet("delete/all")]
+        public async Task<ActionResult<ApiResponse<string>>> DeleteAll(string email)
+        {
+            await _service.DeleteAll();
             return Ok(new ApiResponse<string>
             {
                 StatusCode = StatusCodes.Status200OK

@@ -97,7 +97,10 @@
           "Microsoft.EntityFrameworkCore.Design": "8.0.7",
           "Microsoft.EntityFrameworkCore.SqlServer": "8.0.7",
           "Pomelo.EntityFrameworkCore.MySql": "8.0.2",
-          "AutoMapper": "13.0.1"
+          "AutoMapper": "13.0.1",
+          "System.IdentityModel.Tokens.Jwt": "8.0.2",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "8.0.8",
+          "BCrypt.Net-Next": "4.0.3"
         },
         "inferredTargets": {
           "build": "build",
@@ -107,6 +110,9 @@
         },
         "ignorePaths": [],
         "tags": [
+          "nx-dotnet",
+          "nx-dotnet",
+          "nx-dotnet",
           "nx-dotnet",
           "nx-dotnet",
           "nx-dotnet",

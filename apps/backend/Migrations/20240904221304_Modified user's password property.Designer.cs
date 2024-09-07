@@ -4,6 +4,7 @@ using ChefizaApi.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Chefiza.Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240904221304_Modified user's password property")]
+    partial class Modifieduserspasswordproperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -39,7 +42,7 @@ namespace Chefiza.Backend.Migrations
 
                     b.HasKey("Email");
 
-                    b.ToTable("Authentication", (string)null);
+                    b.ToTable("Authentication");
                 });
 
             modelBuilder.Entity("ChefizaApi.Entities.User", b =>
@@ -66,7 +69,7 @@ namespace Chefiza.Backend.Migrations
 
                     b.HasKey("Email");
 
-                    b.ToTable("Users", (string)null);
+                    b.ToTable("Users");
                 });
 
             modelBuilder.Entity("ChefizaApi.Entities.User", b =>

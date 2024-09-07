@@ -4,7 +4,7 @@ namespace ChefizaApi.Contracts
 {
     public interface IUnitOfWork
     {
-        IBaseRepository<User> Users { get; }
+        IUserRepository Users { get; }
         Task SaveChangesAsync();
     }
 }
