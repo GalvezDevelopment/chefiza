@@ -1,9 +1,9 @@
 /* eslint-disable */
 export default {
-  displayName: 'chefiza',
+  displayName: 'frontend-core',
   preset: '../../jest.preset.js',
   setupFilesAfterEnv: ['<rootDir>/src/test-setup.ts'],
-  coverageDirectory: '../../coverage/apps/chefiza',
+  coverageDirectory: '../../coverage/apps/frontend-core',
   transform: {
     '^.+\\.(ts|mjs|js|html)$': [
       'jest-preset-angular',
