@@ -17,6 +17,9 @@
     "paths": {
       "@chefiza/generated/backend-types": [
         "generated/backend-types/src/index.ts"
+      ],
+      "frontend-login/Routes": [
+        "apps/frontend-login/src/app/remote-entry/entry.routes.ts"
       ]
     }
   },
